@@ -7,3 +7,10 @@ while 1:
     Resp = s.contactServer(Data)
     print("\n"*150)
     print("Server responded with "+Resp)
+
+'''
+s.contactServer, by default, closes the socket.
+To keep it open, use
+
+s.contactServer(Data, Close = False)
+'''
