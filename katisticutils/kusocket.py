@@ -5,7 +5,7 @@ class _ClientSocketRequests:
         self.port = Port
         self.host = Host
 
-    def contactServer(self, Data):
+    def contactServer(self, Data, Close = True):
         SocketC = False
         s = socket.socket()
         
@@ -45,7 +45,8 @@ class _ClientSocketRequests:
 
             Response = str(s.recv(Buffer), "utf-8")
             
-            s.close()
+            if Close:
+                s.close()
             return Response
 
         else:
