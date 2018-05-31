@@ -8,3 +8,10 @@ while 1:
 
     print(req)
     s.Send(sock, "Hello!")
+
+'''
+s.Send, by default, closes the socket.
+To keep the socket open for any reason, use:
+
+s.Send(sock, Data, Close = False)
+'''
