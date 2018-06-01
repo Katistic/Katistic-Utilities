@@ -1,1 +1,3 @@
-from katisticutils import kusocket as socket
+from . import kusocket as socket
+
+from . import file
