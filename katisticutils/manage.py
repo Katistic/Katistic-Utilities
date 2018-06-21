@@ -1,4 +1,4 @@
-def Join(DL, Seperater = ""):
+def join(DL, Seperater = ""):
     if type(DL) != list:
         raise TypeError("Expected variable "+str(list)+", got "+str(type(DL))+".")
         return # In case
