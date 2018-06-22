@@ -11,3 +11,17 @@ def join(DL, Seperater = ""):
         StrDL += str(x)
     
     return StrDL
+
+def isInt(D):
+    if type(D) == int:
+        return True
+    
+    if type(D) != str:
+        raise TypeError("Expected variable "+str(str)+", got "+str(type(D))+".")
+        return
+    
+    try:
+        int(D)
+        return True
+    except:
+        return False
