@@ -2,29 +2,32 @@ import json
 import threading
 
 Queue = []
+Using = False
 
 def WriteToFile(File, Data, Type = "Normal"):
-    try:
-        File = open(File, "r")
-        File.close()
-    except Exception:
-        raise "Could not find file "+File
+    if Using:
+        try:
+            File = open(File, "r")
+            File.close()
+        except Exception:
+            raise "Could not find file "+File
 
-    Queue.append([File, Data, Type])
+        Queue.append([File, Data, Type])
 
 def ReadFromFile(File, Type = "Normal"):
-    while 1:
-        if len(Queue) > 0:
-            break
+    if Using:
+        while 1:
+            if len(Queue) > 0:
+                break
 
-    if Type == "Normal":
-        with open(File, "r") as FFile:
-            Data = File.read()
-    elif Type == "JSON":
-        with open(File, "r") as FFile:
-            Data = json.load(FFile)
+        if Type == "Normal":
+            with open(File, "r") as FFile:
+                Data = File.read()
+        elif Type == "JSON":
+            with open(File, "r") as FFile:
+                Data = json.load(FFile)
 
-    return Data
+        return Data
 
 def RunQueue():
     while 1:
@@ -37,5 +40,6 @@ def RunQueue():
                     with open(x[1], "w") as File:
                         json.dump(x[2], File)
 
-_QueueThread = threading.Thread(target = RunQueue)
-_QueueThread.start()
+def Use():
+    _QueueThread = threading.Thread(target = RunQueue)
+    _QueueThread.start()
