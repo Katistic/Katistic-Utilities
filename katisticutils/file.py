@@ -13,6 +13,8 @@ def WriteToFile(File, Data, Type = "Normal"):
             raise "Could not find file "+File
 
         Queue.append([File, Data, Type])
+    else:
+        raise Exception("Use file.Use first!")
 
 def ReadFromFile(File, Type = "Normal"):
     if Using:
@@ -28,6 +30,8 @@ def ReadFromFile(File, Type = "Normal"):
                 Data = json.load(FFile)
 
         return Data
+    else:
+        raise Exception("Use file.Use first!")
 
 def RunQueue():
     while 1:
@@ -43,3 +47,4 @@ def RunQueue():
 def Use():
     _QueueThread = threading.Thread(target = RunQueue)
     _QueueThread.start()
+    Using = True
