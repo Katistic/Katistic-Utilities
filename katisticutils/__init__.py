@@ -1,5 +1,7 @@
 from . import kusocket as socket
 
+from . import math
+
 from . import file.Use
 from . import file.WriteToFile
 from . import file.ReadFromFile
