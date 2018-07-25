@@ -2,10 +2,10 @@ import math
 
 def getFactorsOf(Num):
     if type(Num) != int:
-        raise TypeError("Expected type " + str(int) + ", got type " + type(Num))
+        raise TypeError("KatisticUtils/math.py: Expected type " + str(int) + ", got type " + type(Num))
     
     if not isWhole(Num):
-        raise Exception("Number must be whole.")
+        raise Exception("KatisticUtils/math.py: Number must be whole.")
     
     Factors = [1, Num]
     MaxFactor = math.ceil(Num / 2)
