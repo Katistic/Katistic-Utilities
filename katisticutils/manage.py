@@ -1,6 +1,6 @@
 def join(DL, Seperater = ""):
     if type(DL) != list:
-        raise TypeError("Expected variable "+str(list)+", got "+str(type(DL))+".")
+        raise TypeError("KatisticUtils/manage.py: Expected variable "+str(list)+", got "+str(type(DL))+".")
         return # In case
     
     Repeat = 0
@@ -17,7 +17,7 @@ def isInt(D):
         return True
     
     if type(D) != str:
-        raise TypeError("Expected variable "+str(str)+", got "+str(type(D))+".")
+        raise TypeError("KatisticUtils/manage.py: Expected variable "+str(str)+", got "+str(type(D))+".")
         return
     
     try:
