@@ -16,9 +16,7 @@ def serv(Data):
     else:
         return None
 
-client = serv(YoutubeData)
-
-def search_list(query, mResults = 1):
+def search_list(client, query, mResults = 1):
     vList = _search_list(client,
                          part = 'snippet',
                          maxResults = mResults,
@@ -50,7 +48,7 @@ def _search_list(client, **kwargs):
     
     return items
 
-def search_playlist(query, mResults = 1):
+def search_playlist(client, query, mResults = 1):
     pList = _search_playlist(client,
                              part = 'snippet',
                              maxResults = mResults,
@@ -79,7 +77,7 @@ def _search_playlist(client, **kwargs):
 
     return items
 
-def get_playlist_items(Id):
+def get_playlist_items(client, Id):
     items = _get_playlist_items(client,
                                 part = 'snippet',
                                 maxResults = 50,
