@@ -1,17 +1,22 @@
 from . import kusocket as socket
 
 from . import math
+from . import file
+from . import manage
+from . import print
 
-from . import file.Use as file.Use
-from . import file.WriteToFile as file.WriteToFile
-from . import file.ReadFromFile as file.ReadFromFile
+_DoNotImport = {}
 
-from . import manage.join as manage.join
-from . import manage.isInt as manage.isInt
+def ImportOtherSubmodule(Submodule):
+    if Submodule.lower() in _DoNotImport:
+        _DoNotImport[Submodule]()
+    else:
+        print("No submodule '" + Submodule.capitalize() + "'")
 
-from . import youtube.search_list
-from . import youtube.search_playlist
-from . import youtube.get_playlist_items
-from . import youtube.Init
+def _DefineSubmodule(Name, Func):
+    _DoNotImport[Name] = Func
 
-from . import print.Write
+def _ImportYoutube():
+    from . import youtube
+
+_DefineSubmodule("youtube", _ImportYoutube)
