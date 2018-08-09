@@ -15,7 +15,11 @@ YoutubeDevKey = "Key"
 VideoToSearch = "Video Title"
 
 ku.ImportOtherSubmodule("youtube")
+```
+You can then reference the module as normal
+
+```python
 Client = ku.youtube.Init(Key)
 
-ku.youtube.search_list(Client, VideoToSearch, mResults = 10)
+Results = ku.youtube.search_list(Client, VideoToSearch, mResults = 10)
 ```
