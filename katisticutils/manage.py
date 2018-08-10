@@ -29,7 +29,7 @@ class List:
             except:
                 continue
         
-        List = NewList8
+        List = NewList
 
 def IsInt(D):
     if type(D) == int:
