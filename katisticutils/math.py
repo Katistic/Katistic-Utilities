@@ -1,6 +1,6 @@
 import math
 
-def getFactorsOf(Num):
+def GetFactorsOf(Num):
     if type(Num) != int:
         raise TypeError("KatisticUtils/math.py: Expected type " + str(int) + ", got type " + type(Num))
     
@@ -22,7 +22,7 @@ def getFactorsOf(Num):
     
     return Factors
 
-def isWhole(Num):
+def IsWhole(Num):
     if Num % 1 == 0:
         return True
     else:
