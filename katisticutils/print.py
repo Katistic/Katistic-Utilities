@@ -22,3 +22,6 @@ def Input(Text = None):
         Data = input()
     
     return Data
+
+def Lock():
+    sys.stdout.flush()
