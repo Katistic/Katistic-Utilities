@@ -16,7 +16,7 @@ def serv(Data):
     else:
         return None
 
-def search_list(client, query, mResults = 1):
+def search_video(client, query, mResults = 1):
     vList = _search_list(client,
                          part = 'snippet',
                          maxResults = mResults,
