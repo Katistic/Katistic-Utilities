@@ -2,7 +2,7 @@ import sys
 
 _LastLength = 0
 
-def Write(Item):
+def Print(Item):
     global _LastLength
     
     Item = str(Item)
@@ -13,3 +13,12 @@ def Write(Item):
     _LastLength = len(Item)
     sys.stdout.write("\r")
     sys.stdout.write(Item)
+
+def Input(Text = None):
+    if Text == None:
+        Data = input()
+    else:
+        Print(Text)
+        Data = input()
+    
+    return Data
