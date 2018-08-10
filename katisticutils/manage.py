@@ -1,4 +1,4 @@
-def join(DL, Seperater = ""):
+def Join(DL, Seperater = ""):
     if type(DL) != list:
         raise TypeError("KatisticUtils/manage.py: Expected variable "+str(list)+", got "+str(type(DL))+".")
         return # In case
@@ -12,7 +12,7 @@ def join(DL, Seperater = ""):
     
     return StrDL
 
-def isInt(D):
+def IsInt(D):
     if type(D) == int:
         return True
     
