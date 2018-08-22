@@ -1,4 +1,4 @@
-# KatisticUtils.py
+# Katistic Utilities
 Some python utils that I made that I think are useful
 
 ## Submodules
