@@ -3,7 +3,7 @@ from . import kusocket as socket
 from . import math
 from . import file
 from . import manage
-from . import print
+from . import ioput
 
 _DoNotImport = {}
 

@@ -9,7 +9,7 @@ _LastLength = 0
 
 def Print(Item):
     global _LastLength
-    
+
     Item = str(Item)
 
     while len(Item) < _LastLength:
@@ -25,37 +25,22 @@ def Input(Text = None):
     else:
         Print(Text)
         Data = input()
-    
+
     return Data
 
 def Lock():
     sys.stdout.flush()
 
-def Select(SL, removeAfterSelected = False):
+def Select(SL, removeAfterSelected = True):
     CURSOR_UP_ONE = '\x1b[1A'
     ERASE_LINE = '\x1b[2K'
-    
+
     Selecting = 0
-    Up = 38
-    Down = 40
-    Enter = 13
+    Entrance = "b'\\xe0'"
+    Down = "b'H'"
+    Up = "b'P'"
+    Enter = "b'\\r'"
     Nul = "b'\\xff'"
-
-    '''
-    UP
-    
-    b'\xe0'
-    b'H'
-    
-    DOWN
-    
-    b'\xe0'
-    b'P'
-
-    ENTER
-
-    b'\r'
-    '''
 
     Selected = False
 
@@ -67,28 +52,32 @@ def Select(SL, removeAfterSelected = False):
             else:
                 NewSL += "    " + SL[x]
 
-            if x != len(SL) - 1:
+            if x != len(SL) + 1:
                 NewSL += "\n"
 
         print(NewSL)
-        
+
         while True:
             Key = getch()
             Key = str(Key)
 
-            if Key == Up:
-                if Selecting == len(SL) - 1:
-                    Selecting = 0
-                else:
-                    Selecting += 1
-                break
+            if Key == Entrance:
+                Key = getch()
+                Key = str(Key)
 
-            elif Key == Down:
-                if Selecting == 0:
-                    Selecting = len(SL) - 1
-                else:
-                    Selecting -= 1
-                break
+                if Key == Up:
+                    if Selecting == len(SL) - 1:
+                        Selecting = 0
+                    else:
+                        Selecting += 1
+                    break
+
+                elif Key == Down:
+                    if Selecting == 0:
+                        Selecting = len(SL) - 1
+                    else:
+                        Selecting -= 1
+                    break
 
             elif Key == Enter:
                 Selected = True
@@ -96,11 +85,13 @@ def Select(SL, removeAfterSelected = False):
 
         if Selected:
             if removeAfterSelected:
-                for x in range(len(SL)):
+                for x in range(len(SL) + 1):
                     print(CURSOR_UP_ONE + ERASE_LINE + CURSOR_UP_ONE)
+                sys.stdout.write(CURSOR_UP_ONE + "\r")
             break
         else:
-            for x in range(len(SL)):
+            for x in range(len(SL) + 1):
                 print(CURSOR_UP_ONE + ERASE_LINE + CURSOR_UP_ONE)
+            sys.stdout.write(CURSOR_UP_ONE + "\r")
 
     return SL[Selecting]
