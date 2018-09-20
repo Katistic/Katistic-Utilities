@@ -14,31 +14,31 @@ class List:
             StrDL += str(x)
 
         return StrDL
-    
+
     def Shuffle(self, List):
         if type(List) != list:
             raise TypeError("KatisticUtils/manage.py: Expected variable "+str(list)+", got "+str(type(DL))+".")
             return
-        
+
         NewList = []
         while len(List) != 0:
             Index = int(random.random() * len(List))
-            
+
             try:
                 NewList.append(List.pop(Index))
             except:
                 continue
-        
+
         List = NewList
 
 def IsInt(D):
     if type(D) == int:
         return True
-    
+
     if type(D) != str:
         raise TypeError("KatisticUtils/manage.py: Expected variable "+str(str)+", got "+str(type(D))+".")
         return
-    
+
     try:
         int(D)
         return True
