@@ -28,6 +28,14 @@ def Input(Text = None):
 
     return Data
 
+def Clear(Lines = 1):
+    CURSOR_UP_ONE = '\x1b[1A'
+    ERASE_LINE = '\x1b[2K'
+
+    for loop in range(Lines):
+        print(CURSOR_UP_ONE + ERASE_LINE + CURSOR_UP_ONE)
+    sys.stdout.write(CURSOR_UP_ONE + "\r")
+
 def Lock():
     sys.stdout.flush()
 
