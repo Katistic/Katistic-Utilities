@@ -103,3 +103,28 @@ def Select(SL, removeAfterSelected = True):
             sys.stdout.write(CURSOR_UP_ONE + "\r")
 
     return SL[Selecting]
+
+
+def GetValidInput(t, disp, length=[]):
+    while True:
+        data = input(disp)
+
+        if type(length) == int:
+            if len(data) != length:
+                continue
+
+        elif type(length) == list:
+            if len(length) == 0:
+                pass
+            elif len(length) == 1:
+                if len(data) < length[0]:
+                    continue
+            elif len(length) == 2:
+                if len(data) < length[0] or len(data) > length[1]:
+                    continue
+
+        try:
+            data = t(data)
+            return data
+        except:
+            continue
